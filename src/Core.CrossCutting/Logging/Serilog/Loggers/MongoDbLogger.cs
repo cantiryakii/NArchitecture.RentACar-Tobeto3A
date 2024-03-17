@@ -11,8 +11,7 @@ public class MongoDbLogger:LoggerServiceBase
     {
         _configuration = configuration;
 
-        var logConfig = configuration.GetSection("SeriLogConfigurations:MongoDbConfiguration")
-            .Get<MongoDbConfiguration>();
+        var logConfig = configuration.GetSection("SeriLogConfigurations:MongoDbConfiguration").Get<MongoDbConfiguration>();
 
         Logger = new LoggerConfiguration()
             .WriteTo.MongoDB(logConfig.ConnectionString, collectionName: logConfig.Collection)
