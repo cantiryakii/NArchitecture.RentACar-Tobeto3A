@@ -14,7 +14,7 @@ public class EfRepositoryBase<TEntity, TEntityId, TContext> : IAsyncRepository<T
     where TContext : DbContext
 {
     protected readonly TContext Context;
-
+   
 
     public EfRepositoryBase(TContext context)
     {
@@ -39,13 +39,13 @@ public class EfRepositoryBase<TEntity, TEntityId, TContext> : IAsyncRepository<T
         return entity;
     }
 
-    public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool withDeleted = false)
+    public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,bool withDeleted = false)
     {
         IQueryable<TEntity> queryable = Query();
         if (include != null)
             queryable = include(queryable);
-        if (withDeleted)
-            queryable = queryable.IgnoreQueryFilters();
+        if(withDeleted)
+            queryable=queryable.IgnoreQueryFilters();
         if (predicate != null)
             queryable = queryable.Where(predicate);
         return await queryable.ToListAsync();

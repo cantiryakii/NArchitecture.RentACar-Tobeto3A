@@ -1,8 +1,8 @@
 ﻿using Core.CrossCuttingConcerns.Logging;
 using Core.CrossCuttingConcerns.Logging.Serilog;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace Core.Application.Pipelines.Logging;
 
@@ -32,6 +32,5 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
         _loggerServiceBase.Info(JsonConvert.SerializeObject(logDetail));
         return next();
     }
-
 
 }

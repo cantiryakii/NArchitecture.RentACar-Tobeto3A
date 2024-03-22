@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Core.Persistence.Paging;
 

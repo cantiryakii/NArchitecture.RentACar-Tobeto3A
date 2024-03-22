@@ -1,6 +1,7 @@
 ﻿using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
+using Dynamic = Core.Persistence.Dynamic.Dynamic;
 
 
 namespace Core.Persistence.Repositories;
@@ -19,14 +20,14 @@ public interface IAsyncRepository<TEntity, TEntityId> : IQuery<TEntity>
 
     Task<List<TEntity>> GetAllAsync
         (Expression<Func<TEntity, bool>> predicate = null,
-         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool withDeleted = false);
+         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,bool withDeleted = false);
 
     Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate,
                Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool withDeleted = false);
 
     Task<TEntity> AddAsync(TEntity entity);
     Task<TEntity> UpdateAsync(TEntity entity);
-    Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false);
-
+    Task<TEntity> DeleteAsync(TEntity entity,bool permanent = false);
+    
 
 }

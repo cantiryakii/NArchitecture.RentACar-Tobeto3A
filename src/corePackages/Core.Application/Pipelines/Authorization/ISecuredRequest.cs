@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Application.Pipelines.Caching;
+namespace Core.Application.Pipelines.Authorization;
 
-public class CacheSettings
+public interface ISecuredRequest
 {
-    public int SlidingExpiration { get; set; }
+    public string[] Roles { get; }
 }

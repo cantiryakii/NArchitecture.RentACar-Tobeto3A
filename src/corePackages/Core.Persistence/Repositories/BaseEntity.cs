@@ -19,9 +19,9 @@ public class BaseEntity<TId>:IEntityTimeStamps
 
     }
 
-    public BaseEntity(TId id, DateTime createdDate, DateTime updatedDate, DateTime deletedDate)
+    public BaseEntity(TId ıd, DateTime createdDate, DateTime updatedDate, DateTime deletedDate)
     {
-        Id = id;
+        Id = ıd;
         CreatedDate = createdDate;
         UpdatedDate = updatedDate;
         DeletedDate = deletedDate;
